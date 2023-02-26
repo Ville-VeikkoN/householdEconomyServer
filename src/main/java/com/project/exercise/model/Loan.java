@@ -42,12 +42,6 @@ public class Loan {
 		this.loanPeriodInMonths = loanPeriodInMonths;
 	}
 
-	/**
-	 * Calculates roughly the monthly payment using loan amount, loan interest and
-	 * amount of (monthly) payments.
-	 * 
-	 * @return
-	 */
 	public int getMonthlyPayment() {
 		if (interest == 0) {
 			return amount / loanPeriodInMonths;

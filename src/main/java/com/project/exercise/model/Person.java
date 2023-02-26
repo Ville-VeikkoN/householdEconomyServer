@@ -104,7 +104,7 @@ public class Person {
 		long years = java.time.temporal.ChronoUnit.YEARS.between(dateOfBirth, now);
 		return (int) years;
 	}
-	
+
 	public boolean isAdult() {
 		return getAge() >= 18;
 	}
@@ -112,7 +112,7 @@ public class Person {
 	@Override
 	public String toString() {
 		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth
-				+ ", gender=" + gender + ", socialNumber=" + socialNumber
-				+ ", household=" + household + ", employments=" + employments + ", loans=" + loans + "]";
+				+ ", gender=" + gender + ", socialNumber=" + socialNumber + ", household=" + household
+				+ ", employments=" + employments + ", loans=" + loans + "]";
 	}
 }

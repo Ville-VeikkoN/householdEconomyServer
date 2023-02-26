@@ -13,7 +13,6 @@ public final class PersonValidator {
 	private final String NAME_REGEX = "^[a-zäöA-ZÄÖ]+(([',. -][a-zäöA-ZÄÖ ])?[a-zäöA-ZÄÖ]*)*$";
 	private final String SOCIAL_REGEX = "^[0-9]{6,}[-][a-zA-Z0-9]{4,}";
 
-	
 	public final boolean isValid(Person person) {
 		List<String> errors = new ArrayList<>();
 

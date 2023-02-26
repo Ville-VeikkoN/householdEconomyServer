@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Household {
+
 	private List<Person> members = new ArrayList<>();
 	private Address address;
 
@@ -40,24 +41,13 @@ public class Household {
 		return members.stream().filter(member -> !member.isAdult()).toList();
 	}
 
-	/**
-	 * Calculates household adults summed up monthly incomes.
-	 * 
-	 * @return
-	 */
 	public int getHouseholdIncomes() {
 		List<Employment> allActiveEmployments = members.stream().filter(Person::isAdult).map(Person::getEmployments)
 				.flatMap(List::stream).filter(Employment::isActive).toList();
 
 		return allActiveEmployments.stream().mapToInt(Employment::getMonthlyIncome).sum();
-
 	}
 
-	/**
-	 * Calculates household members summed up monthly loan payments.
-	 * 
-	 * @return
-	 */
 	public int getHouseholdMonthlyLoanPayments() {
 		return members.stream().map(Person::getLoans).flatMap(List::stream).mapToInt(Loan::getMonthlyPayment).sum();
 	}

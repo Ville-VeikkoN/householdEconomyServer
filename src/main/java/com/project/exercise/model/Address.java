@@ -1,6 +1,7 @@
 package com.project.exercise.model;
 
 public class Address {
+	
 	private String city;
 	private String streetAddress;
 	private String postalCode;
@@ -12,7 +13,7 @@ public class Address {
 		this.postalCode = postalCode;
 		this.postalDistrict = postalDistrict;
 	}
-	
+
 	public String getCity() {
 		return city;
 	}
@@ -44,5 +45,5 @@ public class Address {
 	public void setPostalDistrict(String postalDistrict) {
 		this.postalDistrict = postalDistrict;
 	}
-	
+
 }

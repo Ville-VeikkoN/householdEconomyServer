@@ -5,15 +5,10 @@ import java.time.LocalDate;
 public class Employment {
 
 	private EmploymentRole role;
-
 	private String post;
-
 	private Address address;
-
 	private final LocalDate startDate;
-
 	private LocalDate endDate;
-
 	private int monthlyIncome;
 
 	public Employment(EmploymentRole role, String post, Address address, LocalDate startDate, int monthlyIncome) {
