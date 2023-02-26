@@ -1,4 +1,4 @@
-# household economy
+# Household economy
 ## Project contains domain objects for simple Spring boot back-end
 
 ### Assigment (in Finnish)
