@@ -1,4 +1,4 @@
-package com.project.exercise.person;
+package com.project.exercise.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,12 +9,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.project.exercise.address.Address;
-import com.project.exercise.employment.Employment;
-import com.project.exercise.employment.Role;
-import com.project.exercise.household.Household;
-import com.project.exercise.loan.Loan;
-import com.project.exercise.loan.LoanType;
+import com.project.exercise.model.Address;
+import com.project.exercise.model.Employment;
+import com.project.exercise.model.EmploymentRole;
+import com.project.exercise.model.Gender;
+import com.project.exercise.model.Household;
+import com.project.exercise.model.Loan;
+import com.project.exercise.model.LoanType;
+import com.project.exercise.model.Person;
 
 class PersonTest {
 
@@ -27,9 +29,9 @@ class PersonTest {
 		minor = new Person("EtuNimi", "Sukunimi", Gender.MALE, "010101-010A", LocalDate.of(2007, 1, 12));
 
 		Address address = new Address("Tampere", "Tamperekatu 1 A 1", "00100", "Tampere");
-		Employment currentEmployment = new Employment(Role.EMPLOYEE, "Yritys", address, LocalDate.of(2023, 2, 25),
+		Employment currentEmployment = new Employment(EmploymentRole.EMPLOYEE, "Yritys", address, LocalDate.of(2023, 2, 25),
 				2800);
-		Employment earlierEmployment = new Employment(Role.ENTREPRENEUR, "Vanha Yritys", address,
+		Employment earlierEmployment = new Employment(EmploymentRole.ENTREPRENEUR, "Vanha Yritys", address,
 				LocalDate.of(2018, 3, 5), 2640);
 		earlierEmployment.setEndDate(LocalDate.of(2023, 2, 24));
 
@@ -50,7 +52,6 @@ class PersonTest {
 
 	@Test
 	public void testPerson() {
-
 		assertEquals(29, adult.getAge());
 		assertEquals(16, minor.getAge());
 
@@ -60,9 +61,23 @@ class PersonTest {
 
 	@Test
 	public void testInvalidPerson() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new Person("Etu-Nimi", "Sukunimi", null, "0S50A", LocalDate.of(1993, 8, 25))
+		IllegalArgumentException genderEx = assertThrows(IllegalArgumentException.class, 
+				() -> new Person("Etu-Nimi", "Sukunimi", null, "010101-101A", LocalDate.of(1993, 8, 25))
 				, "Expected IllegalArgumentException");
+		
+		assertTrue(genderEx.getMessage().contains("Gender"));
+		
+		IllegalArgumentException socialNumberEx = assertThrows(IllegalArgumentException.class, 
+				() -> new Person("Etu-Nimi", "Sukunimi", Gender.MALE, "010101-?01A", LocalDate.of(1993, 8, 25))
+				, "Expected IllegalArgumentException");
+		
+		assertTrue(socialNumberEx.getMessage().contains("Social number"));
+		
+		IllegalArgumentException dateOfBirthEx = assertThrows(IllegalArgumentException.class, 
+				() -> new Person("Etu-Nimi", "Sukunimi", Gender.MALE, "010101-101A", LocalDate.of(2026, 1, 1))
+				, "Expected IllegalArgumentException");
+		
+		assertTrue(dateOfBirthEx.getMessage().contains("Date of birth"));
 	}
 
 	@Test
@@ -74,7 +89,7 @@ class PersonTest {
 	public void testEmployment() {
 		List<Employment> currentEmployments = adult.getCurrentEmployments();
 		assertEquals(1, currentEmployments.size());
-		assertEquals(currentEmployments.get(0).getRole(), Role.EMPLOYEE);
+		assertEquals(currentEmployments.get(0).getRole(), EmploymentRole.EMPLOYEE);
 		assertEquals(currentEmployments.get(0).getPost(), "Yritys");
 	}
 
@@ -85,6 +100,7 @@ class PersonTest {
 		assertEquals(2800, household.getHouseholdIncomes());
 		assertEquals(1035, household.getHouseholdMonthlyLoanPayments());
 
+		// Test household with multiple adults
 		Person secondAdult = new Person("Uusi-Jäsen", "Esimerkki", Gender.FEMALE, "010101-010B",
 				LocalDate.of(1993, 8, 21));
 		Loan carLoan = new Loan(LoanType.CAR_LOAN, 10000, 5.4, (12 * 4));
@@ -95,6 +111,13 @@ class PersonTest {
 
 		assertTrue(household.getAdults().containsAll(List.of(adult, secondAdult)));
 		assertTrue(household.getMinors().contains(minor));
+		
+		// Test new empty household
+		Address homeAddress = new Address("Pirkkala", "Pirkkalakatu 2 B 2", "00200", "Pirkkala");
+		Household newEmptyHousehold = new Household(homeAddress);
+		assertEquals(0, newEmptyHousehold.getHouseholdIncomes());
+		assertEquals(0, newEmptyHousehold.getHouseholdMonthlyLoanPayments());
+
 	}
 
 	@Test

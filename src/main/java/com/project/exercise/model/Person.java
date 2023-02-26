@@ -1,12 +1,9 @@
-package com.project.exercise.person;
+package com.project.exercise.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.project.exercise.employment.Employment;
-import com.project.exercise.household.Household;
-import com.project.exercise.loan.Loan;
 import com.project.exercise.validator.PersonValidator;
 
 public class Person {
@@ -15,10 +12,9 @@ public class Person {
 
 	private String firstName;
 	private String lastName;
-	private LocalDate dateOfBirth;
-	private LocalDate dateOfDeath;
-	private Gender gender;
-	private String socialNumber;
+	private final LocalDate dateOfBirth;
+	private final Gender gender;
+	private final String socialNumber;
 	private Household household;
 	private List<Employment> employments = new ArrayList<>();
 	private List<Loan> loans = new ArrayList<>();
@@ -59,35 +55,12 @@ public class Person {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(LocalDate dateOfBirth) {
-		validator.isValidDateOfBirth(dateOfBirth);
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	public LocalDate getDateOfDeath() {
-		return dateOfDeath;
-	}
-
-	public void setDateOfDeath(LocalDate dateOfDeath) {
-		this.dateOfDeath = dateOfDeath;
-	}
-
 	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
-		validator.isValidGender(gender);
-		this.gender = gender;
-	}
-
 	public String getSocialNumber() {
 		return socialNumber;
-	}
-
-	public void setSocialNumber(String socialNumber) {
-		validator.isValidSocialNumber(socialNumber);
-		this.socialNumber = socialNumber;
 	}
 
 	public Household getHousehold() {
@@ -131,7 +104,7 @@ public class Person {
 		long years = java.time.temporal.ChronoUnit.YEARS.between(dateOfBirth, now);
 		return (int) years;
 	}
-
+	
 	public boolean isAdult() {
 		return getAge() >= 18;
 	}
@@ -139,7 +112,7 @@ public class Person {
 	@Override
 	public String toString() {
 		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth
-				+ ", dateOfDeath=" + dateOfDeath + ", gender=" + gender + ", socialNumber=" + socialNumber
+				+ ", gender=" + gender + ", socialNumber=" + socialNumber
 				+ ", household=" + household + ", employments=" + employments + ", loans=" + loans + "]";
 	}
 }

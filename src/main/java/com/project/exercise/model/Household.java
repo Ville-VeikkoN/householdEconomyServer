@@ -1,12 +1,8 @@
-package com.project.exercise.household;
+package com.project.exercise.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.project.exercise.address.Address;
-import com.project.exercise.employment.Employment;
-import com.project.exercise.loan.Loan;
-import com.project.exercise.person.Person;
+import java.util.stream.Collectors;
 
 public class Household {
 	private List<Person> members = new ArrayList<>();
@@ -49,18 +45,12 @@ public class Household {
 	 * 
 	 * @return
 	 */
-	public long getHouseholdIncomes() {
-		int incomes = 0;
-		List<Person> adults = members.stream().filter(Person::isAdult).toList();
+	public int getHouseholdIncomes() {
+		List<Employment> allActiveEmployments = members.stream().filter(Person::isAdult).map(Person::getEmployments)
+				.flatMap(List::stream).filter(Employment::isActive).toList();
 
-		for (Person adult : adults) {
-			for (Employment employment : adult.getEmployments()) {
-				if (employment.isActive()) {
-					incomes += employment.getMonthlyIncome();
-				}
-			}
-		}
-		return incomes;
+		return allActiveEmployments.stream().mapToInt(Employment::getMonthlyIncome).sum();
+
 	}
 
 	/**
@@ -68,16 +58,8 @@ public class Household {
 	 * 
 	 * @return
 	 */
-	public long getHouseholdMonthlyLoanPayments() {
-		int payments = 0;
-
-		for (Person person : members) {
-			for (Loan loan : person.getLoans()) {
-				payments += loan.getMonthlyPayment();
-
-			}
-		}
-		return payments;
+	public int getHouseholdMonthlyLoanPayments() {
+		return members.stream().map(Person::getLoans).flatMap(List::stream).mapToInt(Loan::getMonthlyPayment).sum();
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.project.exercise.loan;
+package com.project.exercise.model;
 
 public enum LoanType {
 	MORTAGE,

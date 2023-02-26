@@ -5,11 +5,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.project.exercise.person.Gender;
-import com.project.exercise.person.Person;
+import com.project.exercise.model.Gender;
+import com.project.exercise.model.Person;
 
 public final class PersonValidator {
 
+	private final String NAME_REGEX = "^[a-zäöA-ZÄÖ]+(([',. -][a-zäöA-ZÄÖ ])?[a-zäöA-ZÄÖ]*)*$";
+	private final String SOCIAL_REGEX = "^[0-9]{6,}[-][a-zA-Z0-9]{4,}";
+
+	
 	public final boolean isValid(Person person) {
 		List<String> errors = new ArrayList<>();
 
@@ -30,7 +34,7 @@ public final class PersonValidator {
 		}
 
 		if (!isValidDateOfBirth(person.getDateOfBirth())) {
-			errors.add(String.format("Social number %s is invalid", person.getSocialNumber()));
+			errors.add(String.format("Date of birth %s is invalid", person.getDateOfBirth()));
 
 		}
 
@@ -53,31 +57,11 @@ public final class PersonValidator {
 		if (socialNumber.isBlank()) {
 			return false;
 		}
-		String[] split = socialNumber.split("-");
-		return split.length == 2 && split[0].length() == 6 && containsOnlyDigits(split[0]) && split[1].length() == 4
-				&& containsOnlyLettersOrDigits(split[1]);
+		return socialNumber.matches(SOCIAL_REGEX);
 	}
 
 	public boolean isValidName(String name) {
-		return !name.isBlank();
-	}
-
-	public boolean containsOnlyDigits(String s) {
-		for (char c : s.toCharArray()) {
-			if (!Character.isDigit(c)) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	public boolean containsOnlyLettersOrDigits(String s) {
-		for (char c : s.toCharArray()) {
-			if (!(Character.isLetterOrDigit(c) || c != '-')) {
-				return false;
-			}
-		}
-		return true;
+		return !name.isBlank() && name.matches(NAME_REGEX);
 	}
 
 }

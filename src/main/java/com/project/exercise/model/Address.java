@@ -1,4 +1,4 @@
-package com.project.exercise.address;
+package com.project.exercise.model;
 
 public class Address {
 	private String city;

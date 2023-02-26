@@ -1,8 +1,8 @@
-package com.project.exercise.loan;
+package com.project.exercise.model;
 
 public class Loan {
 
-	private LoanType type;
+	private final LoanType type;
 	private int amount;
 	private double interest;
 	private int loanPeriodInMonths;
@@ -17,11 +17,7 @@ public class Loan {
 	public LoanType getType() {
 		return type;
 	}
-
-	public void setType(LoanType type) {
-		this.type = type;
-	}
-
+	
 	public int getAmount() {
 		return amount;
 	}

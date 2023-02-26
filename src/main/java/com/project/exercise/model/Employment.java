@@ -1,25 +1,22 @@
-package com.project.exercise.employment;
+package com.project.exercise.model;
 
 import java.time.LocalDate;
 
-import com.project.exercise.address.Address;
-import com.project.exercise.person.Person;
-
 public class Employment {
 
-	private Role role;
+	private EmploymentRole role;
 
 	private String post;
 
 	private Address address;
 
-	private LocalDate startDate;
+	private final LocalDate startDate;
 
 	private LocalDate endDate;
 
 	private int monthlyIncome;
 
-	public Employment(Role role, String post, Address address, LocalDate startDate, int monthlyIncome) {
+	public Employment(EmploymentRole role, String post, Address address, LocalDate startDate, int monthlyIncome) {
 		this.role = role;
 		this.post = post;
 		this.address = address;
@@ -27,11 +24,11 @@ public class Employment {
 		this.monthlyIncome = monthlyIncome;
 	}
 
-	public Role getRole() {
+	public EmploymentRole getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(EmploymentRole role) {
 		this.role = role;
 	}
 
@@ -53,10 +50,6 @@ public class Employment {
 
 	public LocalDate getStartDate() {
 		return startDate;
-	}
-
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
 	}
 
 	public LocalDate getEndDate() {
