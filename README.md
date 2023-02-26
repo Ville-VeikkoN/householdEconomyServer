@@ -18,4 +18,4 @@ Validoinnin toteutin tässä kohtaa vain Person-luokan muuttujille. Nämä tiety
 
 # UML Class diagram:
 
-![DOM (7)](https://user-images.githubusercontent.com/36700188/221422739-fc57aea4-866c-4117-80a2-dc44bd2462af.jpeg)
+![DOM (8)](https://user-images.githubusercontent.com/36700188/221424498-c294d3ac-91f4-45d2-b56f-49d5796ddf63.jpeg)
