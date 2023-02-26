@@ -3,42 +3,30 @@ package com.project.exercise.employment;
 import java.time.LocalDate;
 
 import com.project.exercise.address.Address;
+import com.project.exercise.person.Person;
 
 public class Employment {
 
-	/**
-	 * Role in this employment
-	 */
 	private Role role;
-	/**
-	 * Name of the school or company
-	 */
+
 	private String post;
-	/**
-	 * Address of the school or company
-	 */
+
 	private Address address;
-	/**
-	 * Start date
-	 */
+
 	private LocalDate startDate;
-	/**
-	 * End date
-	 */
+
 	private LocalDate endDate;
-	/**
-	 * Monthly income
-	 */
-	private Double monthlyIncome;
-	
-	public Employment(Role role, String post, Address address, LocalDate startDate, Double monthlyIncome) {
+
+	private int monthlyIncome;
+
+	public Employment(Role role, String post, Address address, LocalDate startDate, int monthlyIncome) {
 		this.role = role;
 		this.post = post;
 		this.address = address;
 		this.startDate = startDate;
 		this.monthlyIncome = monthlyIncome;
 	}
-	
+
 	public Role getRole() {
 		return role;
 	}
@@ -79,18 +67,18 @@ public class Employment {
 		this.endDate = endDate;
 	}
 
-	public Double getMonthlyIncome() {
+	public int getMonthlyIncome() {
 		return monthlyIncome;
 	}
 
-	public void setMonthlyIncome(Double monthlyIncome) {
+	public void setMonthlyIncome(int monthlyIncome) {
 		this.monthlyIncome = monthlyIncome;
 	}
 
 	public boolean isActive() {
-		return endDate == null;
+		return endDate == null || endDate.isAfter(LocalDate.now());
 	}
-	
+
 	public Long getDurationInMonths() {
 		LocalDate now = LocalDate.now();
 		long months = java.time.temporal.ChronoUnit.MONTHS.between(startDate, now);

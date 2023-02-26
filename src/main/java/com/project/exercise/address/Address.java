@@ -9,7 +9,7 @@ public class Address {
 	public Address(String city, String streetAddress, String postalCode, String postalDistrict) {
 		this.city = city;
 		this.streetAddress = streetAddress;
-		setPostalCode(postalCode);
+		this.postalCode = postalCode;
 		this.postalDistrict = postalDistrict;
 	}
 	
@@ -34,9 +34,6 @@ public class Address {
 	}
 
 	public void setPostalCode(String postalCode) {
-		if(!isValidPostalCode(postalCode)) {
-			throw new IllegalArgumentException("Invalid postal code: " + postalCode);
-		}
 		this.postalCode = postalCode;
 	}
 
@@ -48,14 +45,4 @@ public class Address {
 		this.postalDistrict = postalDistrict;
 	}
 	
-	private boolean isValidPostalCode(String postalCode) {
-		try {
-			if(Integer.parseInt(postalCode) > 99999) {
-				return false;
-			}
-		} catch(NumberFormatException e) {
-			return false;
-		}
-		return true;
-	}
 }
