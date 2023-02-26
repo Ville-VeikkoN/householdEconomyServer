@@ -14,7 +14,7 @@
 ### Own observations about assignment (in Finnish)
 Toteutin tehtävän luomalla liiketoimintaluokat kuvitteelliseen järjestelmään jonka kautta voidaan hakea luonnollisten henkilöiden perustietoja sekä tuloja / menoja. Kuvitteellisessä järjestelmässä on myös tieto ruokakunnista ja niiden kokonaistuloista (aikuisten) sekä lainanhoitomenoista. Järjestelmää varmasti käyttäisi (jos sellainen voisi tosielämässä olla) asuntovelalliset hakemaan "vertaistukea" kasvavien korkojen maailmassa sekä mahdollisesti esim. kunnat hakiessaan tietoja ihmisten nykyisien asuinkuntien/asuinmuotojen ja heidän työkuntien suhteita.
 
-Validoinnin toteutin tässä kohtaa vain Person-luokan muuttujille. Nämä tietysti pitäisi huomioida myös muiden liiketoimintaluokkien kohdalla. Luokkien toiminnallisuuksien testaaminen on toteutettu PersonTest.java -luokkaan kootusti. Javadoceja ei toteutettu tämän tehtävän luokille. Tarkoituksenani oli vielä lopuksi muuttaa koodit hyödyntämään annotaatioita luomaan mm. get() ja set() -metodit (https://projectlombok.org/), mutta käyttämäni eclipsen kanssa esiintyi viimehetken ongelmia tämän kanssa.
+Validoinnin toteutin tässä kohtaa vain Person-luokan muuttujille. Nämä tietysti pitäisi huomioida myös muiden liiketoimintaluokkien kohdalla. Luokkien toiminnallisuuksien testaaminen on toteutettu PersonTest.java -luokkaan kootusti. Javadoceja ei toteutettu tämän tehtävän luokille. Tarkoituksenani oli vielä lopuksi muuttaa koodit hyödyntämään annotaatioita luomaan mm. get() ja set() -metodit (https://projectlombok.org/) luettavuutta parantamaan, mutta käyttämäni eclipsen kanssa esiintyi viimehetken ongelmia tämän kanssa.
 
 # UML Class diagram:
 
