@@ -32,10 +32,10 @@ class PersonTest {
 		//Employments (and address)
 		Address workAddress = new Address("Tampere", "Tamperekatu 1 A 1", "00100", "Tampere");
 		Employment currentEmployment = new Employment(EmploymentRole.EMPLOYEE, "Yritys", workAddress,
-				LocalDate.of(2023, 2, 25), 2800);
+				LocalDate.of(2022, 6, 25), 2800);
 		Employment earlierEmployment = new Employment(EmploymentRole.ENTREPRENEUR, "Vanha Yritys", workAddress,
 				LocalDate.of(2018, 3, 5), 2640);
-		earlierEmployment.setEndDate(LocalDate.of(2023, 2, 24));
+		earlierEmployment.setEndDate(LocalDate.of(2022, 6, 24));
 		adult.addEmployment(earlierEmployment);
 		adult.addEmployment(currentEmployment);
 
@@ -96,6 +96,7 @@ class PersonTest {
 	public void testEmployment() {
 		List<Employment> currentEmployments = adult.getCurrentEmployments();
 		assertEquals(1, currentEmployments.size());
+		assertEquals(8, currentEmployments.get(0).getDurationInMonths());
 		assertEquals(currentEmployments.get(0).getRole(), EmploymentRole.EMPLOYEE);
 		assertEquals(currentEmployments.get(0).getPost(), "Yritys");
 	}
