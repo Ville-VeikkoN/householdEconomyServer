@@ -13,3 +13,6 @@
 
 ### Own observations about assignment (in Finnish)
 Toteutin tehtävän luomalla liiketoimintaluokat kuvitteelliseen järjestelmään jonka kautta voidaan hakea tietoa luonnollisten henkilöiden perustietoja sekä tuloja / menoja. Tosielämässä tällaista ei voisi olla, mutta eritoten korkomarkkinoiden noustessa monet asuntovelalliset voisivat hakea lohdutusta muiden vastaavista tilanteista.
+
+# EI AJANTASALLA- PÄIVITETTÄVÄ
+![DOM (6)](https://user-images.githubusercontent.com/36700188/221410592-4a551792-deb3-4fbb-bc2f-ba0055b6f535.jpeg)
