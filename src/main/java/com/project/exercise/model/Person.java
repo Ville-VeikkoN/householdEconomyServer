@@ -29,7 +29,7 @@ public class Person {
 		this.socialNumber = socialNumber;
 		this.dateOfBirth = dateOfBirth;
 
-		validator.isValid(this);
+		this.validator.validate(this);
 	}
 
 	public String getFullName() {
@@ -37,13 +37,13 @@ public class Person {
 	}
 
 	public void setFirstName(String name) {
-		validator.isValidName(name);
 		this.firstName = name;
+		this.validator.validate(this);
 	}
 
 	public void setLastName(String name) {
-		validator.isValidName(name);
 		this.lastName = name;
+		this.validator.validate(this);
 	}
 
 	public List<Employment> getCurrentEmployments() {

@@ -13,7 +13,7 @@ public final class PersonValidator {
 	private final String NAME_REGEX = "^[a-zäöA-ZÄÖ]+(([',. -][a-zäöA-ZÄÖ ])?[a-zäöA-ZÄÖ]*)*$";
 	private final String SOCIAL_REGEX = "^[0-9]{6,}[-][a-zA-Z0-9]{4,}";
 
-	public final boolean isValid(Person person) {
+	public final boolean validate(Person person) {
 		List<String> errors = new ArrayList<>();
 
 		if (!isValidName(person.getFirstName())) {
@@ -44,22 +44,22 @@ public final class PersonValidator {
 		return true;
 	}
 
-	public boolean isValidGender(Gender gender) {
+	private boolean isValidGender(Gender gender) {
 		return gender != null;
 	}
 
-	public boolean isValidDateOfBirth(LocalDate birth) {
+	private boolean isValidDateOfBirth(LocalDate birth) {
 		return birth != null && birth.isBefore(LocalDate.now());
 	}
 
-	public boolean isValidSocialNumber(String socialNumber) {
+	private boolean isValidSocialNumber(String socialNumber) {
 		if (socialNumber.isBlank()) {
 			return false;
 		}
 		return socialNumber.matches(SOCIAL_REGEX);
 	}
 
-	public boolean isValidName(String name) {
+	private boolean isValidName(String name) {
 		return !name.isBlank() && name.matches(NAME_REGEX);
 	}
 
