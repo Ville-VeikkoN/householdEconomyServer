@@ -1,9 +1,11 @@
 package com.project.exercise.model;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
+import java.util.List;
+import lombok.Data;
+
+@Data
 public class Household {
 
 	private List<Person> members = new ArrayList<>();
@@ -13,24 +15,8 @@ public class Household {
 		this.address = address;
 	}
 
-	public List<Person> getMembers() {
-		return members;
-	}
-
-	public void setMembers(List<Person> members) {
-		this.members = members;
-	}
-
 	public void addMember(Person member) {
 		members.add(member);
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
 	}
 
 	public List<Person> getAdults() {

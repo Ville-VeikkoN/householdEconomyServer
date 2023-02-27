@@ -2,6 +2,9 @@ package com.project.exercise.model;
 
 import java.time.LocalDate;
 
+import lombok.Data;
+
+@Data
 public class Employment {
 
 	private EmploymentRole role;
@@ -16,50 +19,6 @@ public class Employment {
 		this.post = post;
 		this.address = address;
 		this.startDate = startDate;
-		this.monthlyIncome = monthlyIncome;
-	}
-
-	public EmploymentRole getRole() {
-		return role;
-	}
-
-	public void setRole(EmploymentRole role) {
-		this.role = role;
-	}
-
-	public String getPost() {
-		return post;
-	}
-
-	public void setPost(String post) {
-		this.post = post;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public LocalDate getStartDate() {
-		return startDate;
-	}
-
-	public LocalDate getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
-	}
-
-	public int getMonthlyIncome() {
-		return monthlyIncome;
-	}
-
-	public void setMonthlyIncome(int monthlyIncome) {
 		this.monthlyIncome = monthlyIncome;
 	}
 

@@ -1,5 +1,8 @@
 package com.project.exercise.model;
 
+import lombok.Data;
+
+@Data
 public class Loan {
 
 	private final LoanType type;
@@ -11,34 +14,6 @@ public class Loan {
 		this.type = type;
 		this.amount = amount;
 		this.interest = interest;
-		this.loanPeriodInMonths = loanPeriodInMonths;
-	}
-
-	public LoanType getType() {
-		return type;
-	}
-	
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-
-	public double getInterest() {
-		return interest;
-	}
-
-	public void setInterest(double interest) {
-		this.interest = interest;
-	}
-
-	public long getLoanPeriodInMonths() {
-		return loanPeriodInMonths;
-	}
-
-	public void setLoanPeriodInMonths(int loanPeriodInMonths) {
 		this.loanPeriodInMonths = loanPeriodInMonths;
 	}
 
